@@ -1,5 +1,11 @@
 # GTA VI em escala real 🌴
 
+
+
+https://github.com/user-attachments/assets/21cfa294-a663-4c2b-be8c-5d892240b7ae
+
+
+
 Uma página interativa que pega os números do jogo mais esperado da década e coloca ao lado de coisas que existem de verdade.
 
 **Leonida é do tamanho de quê? Quanto custou? Quanto tempo levou? Quanta gente trabalhou nisso?** Em vez de responder com uma lista de números, a página deixa você mexer, comparar e descobrir.
