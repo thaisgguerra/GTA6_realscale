@@ -4,11 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GTA VI em escala real</title>
-<link rel="preload" as="image" href="assets/b4d4b306d5.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hn-960.webp" media="(max-width:699px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hn-1440.webp" media="(min-width:700px) and (max-width:1499px) and (max-resolution:1.49dppx), (min-width:700px) and (max-width:899px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hn-2048.webp" media="(min-width:1500px), (min-width:900px) and (min-resolution:1.5dppx)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wdth,wght@1,125,900&family=Mr+Dafoe&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wdth,wght@1,125,900&family=Mr+Dafoe&family=Sora:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wdth,wght@1,125,900&family=Mr+Dafoe&family=Sora:wght@400;600;700&display=swap"></noscript>
 <style>
+:root{--hn:url(assets/hn-960.webp);--hd:url(assets/hd-960.webp)}
+@media (min-width:700px){:root{--hn:url(assets/hn-1440.webp);--hd:url(assets/hd-1440.webp)}}
+@media (min-width:1500px),(min-width:900px) and (min-resolution:1.5dppx){:root{--hn:url(assets/hn-2048.webp);--hd:url(assets/hd-2048.webp)}}
+
 :root{
       box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
@@ -97,7 +104,7 @@ a{color:inherit}
   transform:translate3d(var(--px,0),calc(var(--py,0px) + var(--sy,0px)),0) scale(1.04);transition:opacity .6s;
   container-type:size;will-change:transform;
   animation:hbgIn 2.6s cubic-bezier(.2,.7,.2,1) both,kenburns 32s ease-in-out 0s infinite}
-@keyframes hbgIn{from{filter:blur(6px) saturate(.6) brightness(.7)}to{filter:none}}
+@keyframes hbgIn{from{filter:saturate(.6) brightness(.55)}to{filter:none}}
 @keyframes kenburns{0%{scale:1.06}50%{scale:1}100%{scale:1.06}}
 .hero.off .hbg,.hero.off .neon,.hero.off .neon::after{animation-play-state:paused}
 /* 3. letreiros neon: recorte da própria foto, mais brilhante, com oscilação irregular */
@@ -116,8 +123,8 @@ a{color:inherit}
 /* luzes vivas da cidade */
 .lights{position:absolute;pointer-events:none;width:max(100cqw,225.05cqh);height:max(100cqh,44.434cqw);left:calc((100cqw - max(100cqw,225.05cqh))*.72);top:calc((100cqh - max(100cqh,44.434cqw))*.55);overflow:hidden}
 .lights i{position:absolute;display:block}
-.lamp{width:3.4%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(255,226,160,.9) 0,rgba(255,170,60,.38) 28%,rgba(255,140,40,0) 68%);mix-blend-mode:screen;opacity:.4;animation:lamp var(--d) ease-in-out var(--dl) infinite;will-change:opacity,transform}
-@keyframes lamp{0%,100%{opacity:.32;transform:scale(.9)}50%{opacity:.8;transform:scale(1.08)}}
+.lamp{width:4.6%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,1) 0,rgba(255,214,140,.85) 12%,rgba(255,170,60,.42) 32%,rgba(255,140,40,0) 70%);mix-blend-mode:screen;opacity:.5;animation:lamp var(--d) ease-in-out var(--dl) infinite;will-change:opacity,transform}
+@keyframes lamp{0%,100%{opacity:.12;transform:scale(.82)}45%,55%{opacity:1;transform:scale(1.14)}}
 .lamp.bad{animation:lampBad 6.5s linear var(--dl) infinite}
 @keyframes lampBad{0%,58%,64%,100%{opacity:.6}59%{opacity:.1}60%{opacity:.55}61.5%{opacity:.05}62.5%{opacity:.5}86%{opacity:.4}}
 .bcn{width:.42%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:#ff2a3d;box-shadow:0 0 6px 2px rgba(255,42,61,.8),0 0 18px 6px rgba(255,42,61,.35);opacity:.15;animation:bcn var(--d) ease-out var(--dl) infinite}
@@ -137,7 +144,7 @@ a{color:inherit}
 @keyframes flyB{0%{transform:translate(104%,0)}70%{transform:translate(-4%,14px)}70.01%,100%{transform:translate(-4%,14px);opacity:0}}
 .hero.off .lights i,.hero.off .lights b,.hero.off .lights b::before{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.plane,.win{display:none}}
-@media (max-width:600px){.lamp{width:5%}.plane b::after{width:40px}}
+@media (max-width:600px){.lamp{width:6.5%}.plane b::after{width:40px}}
 @keyframes halo{0%,100%{opacity:.55}50%{opacity:.85}}
 @media (max-width:600px){.neon{animation:none;opacity:.32}}
 /* 4. entrada com glitch RGB */
@@ -151,8 +158,9 @@ a{color:inherit}
 @keyframes gC{0%{opacity:.9;transform:translateX(10px);clip-path:inset(50% 0 22% 0)}14%{transform:translateX(-8px);clip-path:inset(10% 0 66% 0)}28%{transform:translateX(5px);clip-path:inset(62% 0 12% 0)}42%{transform:translateX(-3px);clip-path:inset(22% 0 52% 0)}56%{opacity:.5;transform:translateX(2px);clip-path:inset(78% 0 3% 0)}70%,100%{opacity:0;transform:none;clip-path:inset(0)}}
 .t2{animation:t2in 1.3s 1.15s cubic-bezier(.2,.7,.2,1) both}
 @keyframes t2in{0%{opacity:0;translate:-6px 0;text-shadow:-4px 0 0 rgba(255,42,109,.8),4px 0 0 rgba(39,224,216,.8)}18%{opacity:.85;translate:4px 0}30%{opacity:.4;translate:-2px 0}42%{opacity:1;translate:1px 0;text-shadow:-1.5px 0 0 rgba(255,42,109,.6),1.5px 0 0 rgba(39,224,216,.6),0 0 14px #ff3ea5}60%,100%{opacity:1;translate:0 0}}
-.hbg.n{background-image:var(--tint),url(assets/b4d4b306d5.webp);background-position:72% 55%}
-:root[data-theme="light"] .hbg.d,.hbg.d.ld{background-image:var(--tint),url(assets/aa7ac35559.webp);background-position:72% 55%}
+.hbg.n{background-image:var(--tint),var(--hn),url(data:image/webp;base64,UklGRv4AAABXRUJQVlA4IPIAAACQBgCdASooABIAPt1kq1CopSOipWsxEBuJQBWGaYiR9TEN6/+ivWdVBVz585ghDUBn8Nh0uGHINGX/8b+AAP75DgfWlVTXoC0JZT5K2lE2fHvNx9Qe7BZOcP7P8RJMjr5X3dvgvX5ee8zzqnf6AYwRw5K30C9MgLPfrVVpu3ISBAmGznqLNcK0/cl7b+ZcBCMG3ygKH2jyySbaW+CjkrVKYVKLXKU36bJJa8WDZMojYE5wEDWzdWQC5ZGdxYaqjCVcDiILmTqe154s+XoII1a24I1FBxPbICfmF39i8vuvvfpOjlQ3VuA1Ax2hT0Ky5cAAAA==);background-position:72% 55%}
+.hbg.d{background-image:var(--tint),url(data:image/webp;base64,UklGRjQBAABXRUJQVlA4ICgBAAAwBwCdASooABIAPt1gp06opaMiKqoBEBuJagC1IUFVvmsPLQxDIFRlmIVB8yUocMwnfVhNsXmmhVdh4ldP0IWtdOgA/pCZWiB4L2P/STw6KHvcwlVHTsjs7siTX/VzgV8jqb1Kw6O8uRD2F4/9F+/KAqsi6c/5UcMElI/e8h95s9BTQfPQLzyHysqy9hpzZEAvhi7tao9URfahHcC5shdwsvruQlk/Wq9xeEcJQTLelUGLf2IDX+GoiNPRP3mphr04/1OCG41XwaaV4+OkpM7XPe1IJ7bW9F/L+U6CcyNNEqVPNLyw7om+dY/CrTbGV+DMniHJ/zORs+Zst/KsKwrTJ8xMa3pW2hPhUNFcPcR/NCf52F+GtQnsdaICwLJLaPUGNNbLRIAAAA==)}
+:root[data-theme="light"] .hbg.d,.hbg.d.ld{background-image:var(--tint),var(--hd),url(data:image/webp;base64,UklGRjQBAABXRUJQVlA4ICgBAAAwBwCdASooABIAPt1gp06opaMiKqoBEBuJagC1IUFVvmsPLQxDIFRlmIVB8yUocMwnfVhNsXmmhVdh4ldP0IWtdOgA/pCZWiB4L2P/STw6KHvcwlVHTsjs7siTX/VzgV8jqb1Kw6O8uRD2F4/9F+/KAqsi6c/5UcMElI/e8h95s9BTQfPQLzyHysqy9hpzZEAvhi7tao9URfahHcC5shdwsvruQlk/Wq9xeEcJQTLelUGLf2IDX+GoiNPRP3mphr04/1OCG41XwaaV4+OkpM7XPe1IJ7bW9F/L+U6CcyNNEqVPNLyw7om+dY/CrTbGV+DMniHJ/zORs+Zst/KsKwrTJ8xMa3pW2hPhUNFcPcR/NCf52F+GtQnsdaICwLJLaPUGNNbLRIAAAA==);background-position:72% 55%}
 .near .cta-bg{background-image:var(--tint),url(assets/6cee3e391e.webp);background-position:50% 60%}
 .hbg.d{opacity:0}
 :root[data-theme="light"] .hbg.d{opacity:1}:root[data-theme="light"] .hbg.n{opacity:0}
@@ -1067,7 +1075,7 @@ a.btn.pri,button.btn.pri{color:#1c0a36}
 
 <main id="topo">
 <section class="hero" id="hero">
-  <div class="hbg n" aria-hidden="true"><i class="neon n1"></i><i class="neon n2"></i><i class="neon n3"></i><span class="lights"><i class="lamp" style="left:13.2%;top:71.5%;--d:3.9s;--dl:-0.8s"></i><i class="lamp" style="left:18.7%;top:70.5%;--d:4.7s;--dl:-0.4s"></i><i class="lamp" style="left:24.7%;top:69%;--d:4.4s;--dl:-1.8s"></i><i class="lamp bad" style="left:26.8%;top:68.6%;--d:3.3s;--dl:-2.5s"></i><i class="lamp" style="left:30%;top:68%;--d:3.3s;--dl:-2.2s"></i><i class="lamp" style="left:47.5%;top:66.2%;--d:3.4s;--dl:-0.5s"></i><i class="lamp" style="left:49.4%;top:66.2%;--d:4.2s;--dl:-4.1s"></i><i class="lamp" style="left:52.3%;top:66.5%;--d:3.5s;--dl:-1.1s"></i><i class="lamp" style="left:56.2%;top:66.6%;--d:4.6s;--dl:-4.7s"></i><i class="lamp bad" style="left:63.3%;top:66.6%;--d:4.5s;--dl:-2.0s"></i><i class="lamp" style="left:78.9%;top:66%;--d:5.4s;--dl:-0.2s"></i><i class="lamp" style="left:80.5%;top:66%;--d:5.2s;--dl:-1.4s"></i><i class="bcn" style="left:56.2%;top:9.2%;--d:2.6s;--dl:-0.3s"></i><i class="bcn" style="left:45.2%;top:7.8%;--d:3.1s;--dl:-0.2s"></i><i class="bcn" style="left:65.4%;top:5.6%;--d:2.2s;--dl:-0.6s"></i><i class="bcn" style="left:95.3%;top:2.4%;--d:2.9s;--dl:-1.6s"></i><i class="bcn" style="left:31.2%;top:29.5%;--d:3.4s;--dl:-0.4s"></i><i class="win" style="left:5%;top:42%;--d:16.6s;--dl:-12.8s"></i><i class="win" style="left:8.5%;top:48%;--d:13.8s;--dl:-11.0s"></i><i class="win" style="left:14%;top:40%;--d:9.8s;--dl:-1.2s"></i><i class="win" style="left:16.5%;top:52%;--d:11.7s;--dl:-13.6s"></i><i class="win" style="left:21.5%;top:46%;--d:14.6s;--dl:-6.3s"></i><i class="win" style="left:26.5%;top:55%;--d:16.6s;--dl:-9.1s"></i><i class="win" style="left:31.5%;top:40%;--d:12.9s;--dl:-15.9s"></i><i class="win" style="left:34%;top:47%;--d:18.1s;--dl:-4.9s"></i><i class="win" style="left:37%;top:36%;--d:16.5s;--dl:-10.5s"></i><i class="win" style="left:41%;top:44%;--d:20.4s;--dl:-14.6s"></i><i class="win" style="left:43.5%;top:30%;--d:12.7s;--dl:-19.6s"></i><i class="win" style="left:45.5%;top:18%;--d:10.5s;--dl:-8.4s"></i><i class="win" style="left:47%;top:38%;--d:18.8s;--dl:-3.0s"></i><i class="win" style="left:51.5%;top:34%;--d:15.4s;--dl:-0.8s"></i><i class="win" style="left:55%;top:30%;--d:17.7s;--dl:-15.3s"></i><i class="win" style="left:58%;top:45%;--d:16.4s;--dl:-17.5s"></i><i class="win" style="left:61.5%;top:22%;--d:13.1s;--dl:-13.9s"></i><i class="win" style="left:64%;top:32%;--d:16.7s;--dl:-11.6s"></i><i class="win" style="left:66.5%;top:15%;--d:14.9s;--dl:-16.8s"></i><i class="win" style="left:72%;top:29%;--d:21.3s;--dl:-9.5s"></i><i class="win" style="left:85.5%;top:26%;--d:17.6s;--dl:-1.2s"></i><i class="win" style="left:88.5%;top:20%;--d:18.1s;--dl:-12.9s"></i><i class="win" style="left:91%;top:12%;--d:21.9s;--dl:-16.4s"></i><i class="win" style="left:93.5%;top:25%;--d:12.7s;--dl:-7.7s"></i><i class="plane p1"><b></b></i><i class="plane p2"><b></b></i></span></div><div class="hbg d" aria-hidden="true"></div>
+  <div class="hbg n" aria-hidden="true"><i class="neon n1"></i><i class="neon n2"></i><i class="neon n3"></i><span class="lights"><i class="lamp" style="left:13.2%;top:71.5%;--d:3.0s;--dl:-0.8s"></i><i class="lamp" style="left:18.7%;top:70.5%;--d:3.4s;--dl:-0.4s"></i><i class="lamp" style="left:24.7%;top:69%;--d:2.7s;--dl:-1.8s"></i><i class="lamp bad" style="left:26.8%;top:68.6%;--d:3.3s;--dl:-2.5s"></i><i class="lamp" style="left:30%;top:68%;--d:2.8s;--dl:-2.2s"></i><i class="lamp" style="left:47.5%;top:66.2%;--d:3.4s;--dl:-0.5s"></i><i class="lamp" style="left:49.4%;top:66.2%;--d:3.8s;--dl:-4.1s"></i><i class="lamp" style="left:52.3%;top:66.5%;--d:2.7s;--dl:-1.1s"></i><i class="lamp" style="left:56.2%;top:66.6%;--d:2.9s;--dl:-4.7s"></i><i class="lamp bad" style="left:63.3%;top:66.6%;--d:4.5s;--dl:-2.0s"></i><i class="lamp" style="left:78.9%;top:66%;--d:3.7s;--dl:-0.2s"></i><i class="lamp" style="left:80.5%;top:66%;--d:3.0s;--dl:-1.4s"></i><i class="bcn" style="left:56.2%;top:9.2%;--d:2.6s;--dl:-0.3s"></i><i class="bcn" style="left:45.2%;top:7.8%;--d:3.1s;--dl:-0.2s"></i><i class="bcn" style="left:65.4%;top:5.6%;--d:2.2s;--dl:-0.6s"></i><i class="bcn" style="left:95.3%;top:2.4%;--d:2.9s;--dl:-1.6s"></i><i class="bcn" style="left:31.2%;top:29.5%;--d:3.4s;--dl:-0.4s"></i><i class="win" style="left:5%;top:42%;--d:16.6s;--dl:-12.8s"></i><i class="win" style="left:8.5%;top:48%;--d:13.8s;--dl:-11.0s"></i><i class="win" style="left:14%;top:40%;--d:9.8s;--dl:-1.2s"></i><i class="win" style="left:16.5%;top:52%;--d:11.7s;--dl:-13.6s"></i><i class="win" style="left:21.5%;top:46%;--d:14.6s;--dl:-6.3s"></i><i class="win" style="left:26.5%;top:55%;--d:16.6s;--dl:-9.1s"></i><i class="win" style="left:31.5%;top:40%;--d:12.9s;--dl:-15.9s"></i><i class="win" style="left:34%;top:47%;--d:18.1s;--dl:-4.9s"></i><i class="win" style="left:37%;top:36%;--d:16.5s;--dl:-10.5s"></i><i class="win" style="left:41%;top:44%;--d:20.4s;--dl:-14.6s"></i><i class="win" style="left:43.5%;top:30%;--d:12.7s;--dl:-19.6s"></i><i class="win" style="left:45.5%;top:18%;--d:10.5s;--dl:-8.4s"></i><i class="win" style="left:47%;top:38%;--d:18.8s;--dl:-3.0s"></i><i class="win" style="left:51.5%;top:34%;--d:15.4s;--dl:-0.8s"></i><i class="win" style="left:55%;top:30%;--d:17.7s;--dl:-15.3s"></i><i class="win" style="left:58%;top:45%;--d:16.4s;--dl:-17.5s"></i><i class="win" style="left:61.5%;top:22%;--d:13.1s;--dl:-13.9s"></i><i class="win" style="left:64%;top:32%;--d:16.7s;--dl:-11.6s"></i><i class="win" style="left:66.5%;top:15%;--d:14.9s;--dl:-16.8s"></i><i class="win" style="left:72%;top:29%;--d:21.3s;--dl:-9.5s"></i><i class="win" style="left:85.5%;top:26%;--d:17.6s;--dl:-1.2s"></i><i class="win" style="left:88.5%;top:20%;--d:18.1s;--dl:-12.9s"></i><i class="win" style="left:91%;top:12%;--d:21.9s;--dl:-16.4s"></i><i class="win" style="left:93.5%;top:25%;--d:12.7s;--dl:-7.7s"></i><i class="plane p1"><b></b></i><i class="plane p2"><b></b></i></span></div><div class="hbg d" aria-hidden="true"></div>
   <div class="wrap">
     <span class="tag"><span data-i18n="tagHero">Vice City, Leonida // 2026</span></span>
     <h1><span class="t1">GTA VI</span><span class="sr"> </span><span class="t2" data-i18n="t2">em escala real</span></h1>
@@ -1768,7 +1776,6 @@ a.btn.pri,button.btn.pri{color:#1c0a36}
     {id:'central',pt:['Central Park','Central Parks','do Central Park','O parque de Nova York tem 3,4 km².'],en:['Central Park','Central Parks','of Central Park','New York’s park covers 3.4 km².'],km:3.41},
     {id:'noronha',pt:['Fernando de Noronha','ilhas de Fernando de Noronha','de Fernando de Noronha','Ilha principal, com cerca de 17 km².'],en:['Fernando de Noronha','Fernando de Noronha islands','of Fernando de Noronha','The main island, about 17 km².'],km:17},
     {id:'manhattan',pt:['Manhattan','Manhattans','de Manhattan','A ilha de Manhattan tem cerca de 59 km².'],en:['Manhattan','Manhattans','of Manhattan','Manhattan island is about 59 km².'],km:59.1},
-    {id:'sanmarino',pt:['San Marino','San Marinos','de San Marino','Um país inteiro em 61 km².'],en:['San Marino','San Marinos','of San Marino','An entire country in 61 km².'],km:61.2},
     {id:'miami',pt:['Miami','Miamis','de Miami','A cidade que inspira Vice City tem cerca de 93 km² de terra.'],en:['Miami','Miamis','of Miami','The city that inspires Vice City has about 93 km² of land.'],km:93},
     {id:'paris',pt:['Paris','cidades de Paris','de Paris','Paris dentro do anel viário tem cerca de 105 km².'],en:['Paris','cities of Paris','of Paris','Paris inside the ring road is about 105 km².'],km:105.4},
     {id:'rio',pt:['Rio de Janeiro','cidades do Rio','do município do Rio de Janeiro','O município do Rio tem cerca de 1.200 km², segundo o IBGE.'],en:['Rio de Janeiro','cities of Rio','of the city of Rio de Janeiro','The city of Rio covers about 1,200 km², according to IBGE.'],km:1200.3},
@@ -1787,7 +1794,6 @@ a.btn.pri,button.btn.pri{color:#1c0a36}
     central:[[0,0],[.83,0],[.83,4.1],[0,4.1]],
     maracana:[[0,0],[105,0],[105,68],[0,68]],
     noronha:[[0,2],[1.5,1],[3,.6],[5,0],[7,.3],[8,1],[6.5,1.8],[5,2.4],[3,2.8],[1.5,3.2],[.4,3]],
-    sanmarino:[[2,0],[4,.5],[5.5,2],[6,4],[5,6.5],[3.5,8],[2,7.5],[.5,6],[0,3.5],[.6,1.5]],
     miami:[[0,0],[4,0],[5,1],[6,1],[6.5,3],[6,6],[6.5,8],[5,10],[3,10],[2,8],[0,8],[0,4]],
     saopaulo:[[8,0],[14,1],[20,2],[24,6],[26,12],[25,18],[22,24],[21,32],[20,40],[19,48],[17,56],[14,64],[11,66],[9,60],[10,52],[10,44],[8,36],[4,30],[0,24],[1,16],[3,9],[5,3]],
     rio:[[0,14],[6,10],[14,8],[22,6],[32,4],[42,2],[52,3],[60,6],[66,8],[70,12],[68,18],[62,20],[56,24],[50,26],[44,24],[38,27],[30,28],[22,30],[14,29],[8,25],[2,20]],
